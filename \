@@ -1,0 +1,46 @@
+ 
+ INTEGER, PARAMETER :: M = 5, N = 6
+ INTEGER            :: idx(5)
+ INTEGER            :: j
+ REAL               :: vector(0:N-1)
+ REAL               :: matrix(M,N)
+ REAL               :: y(0:M-1)
+ CHARACTER(LEN=40)  :: screen(6)
+ INTEGER,DIMENSION(:,:),  ALLOCATABLE :: a,b
+ real,dimension(:,:), ALLOCATABLE :: ar,br
+ integer :: lengths(5)
+ 
+ lengths = (/100,200,300,500,1000/)
+ call RANDOM_NUMBER(ar)
+ call RANDOM_NUMBER(br)
+call rand_int(a)
+call rand_int(b)
+ do j = 1,5
+print *, lengths(j)
+  allocate(a(lengths(j),lengths(j)))
+allocate (b(lengths(j),lengths(j)))
+allocate (ar(lengths(j),lengths(j)))
+allocate (br(lengths(j),lengths(j)))
+deallocate (a)
+deallocate (b)
+deallocate (ar)
+deallocate (br)
+enddo
+
+contains 
+subroutine rand_int(matrix)
+ integer, dimension(:,:) :: matrix
+ real :: u
+integer :: n,m
+print *, matrix
+n = size(matrix,1)
+
+print *, n 
+do i = 1,n
+do j=1,n
+call RANDOM_NUMBER(u)
+matrix(i,j) =1
+enddo
+enddo
+end subroutine rand_int
+end
